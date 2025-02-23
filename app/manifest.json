@@ -1,0 +1,6 @@
+{
+  "name": "John's Snooker App",
+  "short_name": "Snooker App",
+  "start_url": ".",
+  "display": "standalone"
+}
