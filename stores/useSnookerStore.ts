@@ -4,21 +4,24 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 interface ISnookerStore {
-  snookers: SnookerItemType[]
+  games: SnookerItemType[]
   addGame: () => void
   updatePlayer1Name: (id: string, player1name: string) => void
+  updatePlayer1Score: (id: string, player1score: string) => void
+  updatePlayer2Name: (id: string, player2name: string) => void
+  updatePlayer2Score: (id: string, player2score: string) => void
   deleteGame: (id: string) => void
 }
 
 export const useSnookerStore = create<ISnookerStore>()(
   persist(
     (set) => ({
-      snookers: [],
+      games: [],
 
       addGame: () => {
         set((state) => ({
-          snookers: [
-            ...state.snookers,
+          games: [
+            ...state.games,
             {
               id: v4(),
               player1name: 'player 1 name',
@@ -30,20 +33,53 @@ export const useSnookerStore = create<ISnookerStore>()(
         }))
       },
 
-      updatePlayer1Name: (id, player1name) => {
+      updatePlayer1Name: (id, name) => {
         set((state) => ({
-          snookers: state.snookers.map((snookers) => {
-            if (snookers.id === id) {
-              snookers.player1name = player1name
+          games: state.games.map((games) => {
+            if (games.id === id) {
+              games.player1name = name
             }
-            return snookers
+            return games
+          }),
+        }))
+      },
+
+      updatePlayer1Score: (id, score) => {
+        set((state) => ({
+          games: state.games.map((games) => {
+            if (games.id === id) {
+              games.player1score = score
+            }
+            return games
+          }),
+        }))
+      },
+
+      updatePlayer2Name: (id, name) => {
+        set((state) => ({
+          games: state.games.map((games) => {
+            if (games.id === id) {
+              games.player2name = name
+            }
+            return games
+          }),
+        }))
+      },
+
+      updatePlayer2Score: (id, score) => {
+        set((state) => ({
+          games: state.games.map((games) => {
+            if (games.id === id) {
+              games.player2score = score
+            }
+            return games
           }),
         }))
       },
 
       deleteGame: (id) => {
         set((state) => ({
-          snookers: state.snookers.filter((snookers) => snookers.id !== id),
+          games: state.games.filter((games) => games.id !== id),
         }))
       },
     }),

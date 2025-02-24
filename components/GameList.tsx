@@ -1,9 +1,10 @@
 import React from 'react'
 import { FaPlus } from 'react-icons/fa6'
+import GameItem from './GameItem'
 import { useSnookerStore } from '@/stores/useSnookerStore'
 
-export default function TodoList() {
-  const { addGame } = useSnookerStore()
+export default function GameList() {
+  const { games, addGame } = useSnookerStore()
 
   return (
     <div className="p-8 w-full text-center">
@@ -15,7 +16,11 @@ export default function TodoList() {
         Add Game
       </button>
 
-      <h1 className="py-3">In Progress Todos</h1>
+      <>
+        {games.map((games) => (
+          <GameItem key={games.id} games={games} />
+        ))}
+      </>
     </div>
   )
 }
