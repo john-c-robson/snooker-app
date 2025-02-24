@@ -9,7 +9,7 @@ export default function GameList() {
   return (
     <div className="p-8 w-full text-center">
       <button
-        className="flex flex-row bg-green-600 px-2 py-1 rounded-md"
+        className="flex flex-row bg-green-600 hover:bg-green-500 px-2 py-1 rounded-md"
         onClick={addGame}
       >
         <FaPlus className="me-2 mt-1" />
