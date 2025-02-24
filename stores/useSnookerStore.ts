@@ -1,0 +1,91 @@
+import { SnookerItemType } from '@/types'
+import { v4 } from 'uuid'
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
+
+interface ISnookerStore {
+  games: SnookerItemType[]
+  addGame: () => void
+  updatePlayer1Name: (id: string, player1name: string) => void
+  updatePlayer1Score: (id: string, player1score: string) => void
+  updatePlayer2Name: (id: string, player2name: string) => void
+  updatePlayer2Score: (id: string, player2score: string) => void
+  deleteGame: (id: string) => void
+}
+
+export const useSnookerStore = create<ISnookerStore>()(
+  persist(
+    (set) => ({
+      games: [],
+
+      addGame: () => {
+        set((state) => ({
+          games: [
+            ...state.games,
+            {
+              id: v4(),
+              player1name: 'player 1 name',
+              player1score: '0',
+              player2name: 'player 2 name',
+              player2score: '0',
+            },
+          ],
+        }))
+      },
+
+      updatePlayer1Name: (id, name) => {
+        set((state) => ({
+          games: state.games.map((games) => {
+            if (games.id === id) {
+              games.player1name = name
+            }
+            return games
+          }),
+        }))
+      },
+
+      updatePlayer1Score: (id, score) => {
+        set((state) => ({
+          games: state.games.map((games) => {
+            if (games.id === id) {
+              games.player1score = score
+            }
+            return games
+          }),
+        }))
+      },
+
+      updatePlayer2Name: (id, name) => {
+        set((state) => ({
+          games: state.games.map((games) => {
+            if (games.id === id) {
+              games.player2name = name
+            }
+            return games
+          }),
+        }))
+      },
+
+      updatePlayer2Score: (id, score) => {
+        set((state) => ({
+          games: state.games.map((games) => {
+            if (games.id === id) {
+              games.player2score = score
+            }
+            return games
+          }),
+        }))
+      },
+
+      deleteGame: (id) => {
+        set((state) => ({
+          games: state.games.filter((games) => games.id !== id),
+        }))
+      },
+    }),
+    {
+      name: 'johns-todo-app_todo-store',
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+)

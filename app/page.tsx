@@ -1,6 +1,6 @@
 'use client'
 
-// import TodoList from '@/components/TodoList'
+import GameList from '@/components/GameList'
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
         <div className="top bg-slate-900 p-4 pt-12 w-full text-center">
           <h1>Snooker App</h1>
         </div>
-        {/* <TodoList /> */}
+        <GameList />
       </div>
     </>
   )
