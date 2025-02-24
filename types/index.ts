@@ -4,4 +4,5 @@ export type SnookerItemType = {
   player1score: string
   player2name: string
   player2score: string
+  locked: boolean
 }

@@ -11,6 +11,7 @@ interface ISnookerStore {
   updatePlayer2Name: (id: string, player2name: string) => void
   updatePlayer2Score: (id: string, player2score: string) => void
   deleteGame: (id: string) => void
+  lockGame: (id: string) => void
 }
 
 export const useSnookerStore = create<ISnookerStore>()(
@@ -28,6 +29,7 @@ export const useSnookerStore = create<ISnookerStore>()(
               player1score: '0',
               player2name: 'player 2 name',
               player2score: '0',
+              locked: false,
             },
           ],
         }))
@@ -80,6 +82,14 @@ export const useSnookerStore = create<ISnookerStore>()(
       deleteGame: (id) => {
         set((state) => ({
           games: state.games.filter((games) => games.id !== id),
+        }))
+      },
+
+      lockGame: (id: string) => {
+        set((state) => ({
+          games: state.games.map((game) =>
+            game.id === id ? { ...game, locked: !game.locked } : game
+          ),
         }))
       },
     }),
