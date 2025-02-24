@@ -19,10 +19,10 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Todo App',
+  title: 'Snooker App',
   description: 'A simple Snooker app',
   openGraph: {
-    title: 'Todo App',
+    title: 'Snooker App',
     description: 'A simple Snooker app',
     type: 'website',
     locale: 'en_US',
