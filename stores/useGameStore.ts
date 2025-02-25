@@ -94,7 +94,7 @@ export const useSnookerStore = create<IGameStore>()(
       },
     }),
     {
-      name: 'johns-todo-app_todo-store',
+      name: 'johns-snooker-app_game-store',
       storage: createJSONStorage(() => localStorage),
     }
   )
