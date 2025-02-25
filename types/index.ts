@@ -1,4 +1,4 @@
-export type SnookerItemType = {
+export type GameType = {
   id: string
   player1name: string
   player1score: string

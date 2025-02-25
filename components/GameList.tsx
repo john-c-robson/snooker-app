@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaPlus } from 'react-icons/fa6'
 import GameItem from './GameItem'
-import { useSnookerStore } from '@/stores/useSnookerStore'
+import { useSnookerStore } from '@/stores/useGameStore'
 
 export default function GameList() {
   const { games, addGame } = useSnookerStore()
