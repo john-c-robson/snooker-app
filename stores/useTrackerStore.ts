@@ -1,0 +1,127 @@
+import { TrackerType } from '@/types'
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
+
+interface ITrackerStore {
+  tracker: TrackerType
+  updatePlayer1Name: (player1name: string) => void
+  updatePlayer2Name: (player2name: string) => void
+  updateScore: (points: number) => void
+  switchPlayer: () => void
+  resetScreen: () => void
+}
+
+export const useTrackerStore = create<ITrackerStore>()(
+  persist(
+    (set) => ({
+      tracker: {
+        player1name: '',
+        player2name: '',
+        player1score: 0,
+        player2score: 0,
+        playerselector: true,
+      } as TrackerType,
+      //
+      updatePlayer1Name: (name) => {
+        set((state) => ({
+          tracker: {
+            ...state.tracker,
+            player1name: name,
+          },
+        }))
+      },
+      //
+      updatePlayer2Name: (name) => {
+        set((state) => ({
+          tracker: {
+            ...state.tracker,
+            player2name: name,
+          },
+        }))
+      },
+      //
+      updateScore: (points) => {
+        set((state) => ({
+          tracker: {
+            ...state.tracker,
+            player1score: state.tracker.playerselector
+              ? state.tracker.player1score + points
+              : state.tracker.player1score,
+            player2score: !state.tracker.playerselector
+              ? state.tracker.player2score + points
+              : state.tracker.player2score,
+          },
+        }))
+      },
+      //
+      switchPlayer: () => {
+        set((state) => ({
+          tracker: {
+            ...state.tracker,
+            playerselector: !state.tracker.playerselector,
+          },
+        }))
+      },
+      //
+      resetScreen: () => {
+        set((state) => ({
+          tracker: {
+            ...state.tracker,
+            player1name: '',
+            player2name: '',
+            player1score: 0,
+            player2score: 0,
+            playerselector: true,
+          },
+        }))
+      },
+      //
+    }),
+    {
+      name: 'johns-snooker-app_tracker-store',
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+)
+
+//   updatePlayerSelection: (id: string) => void
+
+//
+//
+//
+
+//   updatePlayer1Score: (score) => {
+//     set((state) => ({
+//       trackers: state.trackers.map((trackers) => {
+//         trackers.player1score = score
+
+//         return trackers
+//       }),
+//     }))
+//   },
+
+//   updatePlayer2Name: (name) => {
+//     set((state) => ({
+//       trackers: state.trackers.map((trackers) => {
+//         trackers.player2name = name
+
+//         return trackers
+//       }),
+//     }))
+//   },
+
+//   updatePlayer2Score: (score) => {
+//     set((state) => ({
+//       trackers: state.trackers.map((trackers) => {
+//         trackers.player2score = score
+
+//         return trackers
+//       }),
+//     }))
+//   },
+
+//   lockGame: (id: string) => {
+//     set((state) => ({
+//       //
+//     }))
+//   },
