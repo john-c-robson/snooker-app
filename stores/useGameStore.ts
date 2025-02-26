@@ -1,10 +1,10 @@
-import { SnookerItemType } from '@/types'
+import { GameType } from '@/types'
 import { v4 } from 'uuid'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-interface ISnookerStore {
-  games: SnookerItemType[]
+interface IGameStore {
+  games: GameType[]
   addGame: () => void
   updatePlayer1Name: (id: string, player1name: string) => void
   updatePlayer1Score: (id: string, player1score: string) => void
@@ -14,7 +14,7 @@ interface ISnookerStore {
   lockGame: (id: string) => void
 }
 
-export const useSnookerStore = create<ISnookerStore>()(
+export const useSnookerStore = create<IGameStore>()(
   persist(
     (set) => ({
       games: [],
@@ -94,7 +94,7 @@ export const useSnookerStore = create<ISnookerStore>()(
       },
     }),
     {
-      name: 'johns-todo-app_todo-store',
+      name: 'johns-snooker-app_game-store',
       storage: createJSONStorage(() => localStorage),
     }
   )

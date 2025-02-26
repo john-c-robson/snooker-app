@@ -1,15 +1,15 @@
-import { SnookerItemType } from '@/types'
+import { GameType } from '@/types'
 import React from 'react'
 import { FaRegTrashCan } from 'react-icons/fa6'
-import { useSnookerStore } from '@/stores/useSnookerStore'
+import { useSnookerStore } from '@/stores/useGameStore'
 import { FaLockOpen } from 'react-icons/fa'
 import { FaLock } from 'react-icons/fa'
 
-interface SnookerItemProps {
-  games: SnookerItemType
+interface GameItemProps {
+  games: GameType
 }
 
-export default function GameItem({ games }: SnookerItemProps) {
+export default function GameItem({ games }: GameItemProps) {
   const {
     updatePlayer1Name,
     updatePlayer1Score,
