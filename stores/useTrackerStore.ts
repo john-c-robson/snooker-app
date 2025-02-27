@@ -9,6 +9,7 @@ interface ITrackerStore {
   updateScore: (points: number) => void
   switchPlayer: () => void
   resetScreen: () => void
+  switchColour: () => void
 }
 
 export const useTrackerStore = create<ITrackerStore>()(
@@ -20,6 +21,7 @@ export const useTrackerStore = create<ITrackerStore>()(
         player1score: 0,
         player2score: 0,
         playerselector: true,
+        colourLock: true,
       } as TrackerType,
       //
       updatePlayer1Name: (name) => {
@@ -59,6 +61,16 @@ export const useTrackerStore = create<ITrackerStore>()(
           tracker: {
             ...state.tracker,
             playerselector: !state.tracker.playerselector,
+            colourLock: true,
+          },
+        }))
+      },
+      //
+      switchColour: () => {
+        set((state) => ({
+          tracker: {
+            ...state.tracker,
+            colourLock: !state.tracker.colourLock,
           },
         }))
       },
@@ -72,6 +84,7 @@ export const useTrackerStore = create<ITrackerStore>()(
             player1score: 0,
             player2score: 0,
             playerselector: true,
+            colourLock: true,
           },
         }))
       },
@@ -83,45 +96,3 @@ export const useTrackerStore = create<ITrackerStore>()(
     }
   )
 )
-
-//   updatePlayerSelection: (id: string) => void
-
-//
-//
-//
-
-//   updatePlayer1Score: (score) => {
-//     set((state) => ({
-//       trackers: state.trackers.map((trackers) => {
-//         trackers.player1score = score
-
-//         return trackers
-//       }),
-//     }))
-//   },
-
-//   updatePlayer2Name: (name) => {
-//     set((state) => ({
-//       trackers: state.trackers.map((trackers) => {
-//         trackers.player2name = name
-
-//         return trackers
-//       }),
-//     }))
-//   },
-
-//   updatePlayer2Score: (score) => {
-//     set((state) => ({
-//       trackers: state.trackers.map((trackers) => {
-//         trackers.player2score = score
-
-//         return trackers
-//       }),
-//     }))
-//   },
-
-//   lockGame: (id: string) => {
-//     set((state) => ({
-//       //
-//     }))
-//   },

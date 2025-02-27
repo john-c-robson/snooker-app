@@ -4,6 +4,7 @@ import { LuSave } from 'react-icons/lu'
 import { RxReset } from 'react-icons/rx'
 import { FaCircle } from 'react-icons/fa'
 import { TbStarFilled } from 'react-icons/tb'
+import { ImBlocked } from 'react-icons/im'
 
 export default function SnookerTracker() {
   const {
@@ -13,6 +14,7 @@ export default function SnookerTracker() {
     updateScore,
     switchPlayer,
     resetScreen,
+    switchColour,
   } = useTrackerStore()
 
   const handleScoreUpdate = (points: number) => {
@@ -111,8 +113,18 @@ export default function SnookerTracker() {
       {/*  */}
 
       <div className="flex justify-center items-center bg-slate-700 m-8 rounded-lg">
-        <button onClick={() => handleScoreUpdate(1)}>
-          <FaCircle className="m-2 p-3 rounded-md w-16 h-16 text-red-700 hover:text-red-500 text" />
+        <button
+          onClick={() => {
+            handleScoreUpdate(1)
+            switchColour()
+          }}
+          disabled={!tracker.colourLock}
+        >
+          {tracker.colourLock ? (
+            <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-red-700 hover:text-red-500" />
+          ) : (
+            <ImBlocked className="opacity-50 m-4 p-3 rounded-md w-16 h-16 text-white cursor-not-allowed" />
+          )}
         </button>
       </div>
 
@@ -123,23 +135,83 @@ export default function SnookerTracker() {
       {/*  */}
 
       <div className="flex justify-center items-center bg-slate-700 m-8 rounded-lg">
-        <button onClick={() => handleScoreUpdate(2)}>
-          <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-yellow-500 hover:text-yellow-300 text" />
+        <button
+          onClick={() => {
+            handleScoreUpdate(2)
+            switchColour()
+          }}
+          disabled={tracker.colourLock}
+        >
+          {!tracker.colourLock ? (
+            <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-yellow-500 hover:text-yellow-300" />
+          ) : (
+            <ImBlocked className="opacity-50 m-4 p-3 rounded-md w-16 h-16 text-white cursor-not-allowed" />
+          )}
         </button>
-        <button onClick={() => handleScoreUpdate(3)}>
-          <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-green-700 hover:text-green-500 text" />
+        <button
+          onClick={() => {
+            handleScoreUpdate(3)
+            switchColour()
+          }}
+          disabled={tracker.colourLock}
+        >
+          {!tracker.colourLock ? (
+            <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-green-700 hover:text-green-500" />
+          ) : (
+            <ImBlocked className="opacity-50 m-4 p-3 rounded-md w-16 h-16 text-white cursor-not-allowed" />
+          )}
         </button>
-        <button onClick={() => handleScoreUpdate(4)}>
-          <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-amber-900 hover:text-amber-800 text" />
+        <button
+          onClick={() => {
+            handleScoreUpdate(4)
+            switchColour()
+          }}
+          disabled={tracker.colourLock}
+        >
+          {!tracker.colourLock ? (
+            <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-amber-900 hover:text-amber-800" />
+          ) : (
+            <ImBlocked className="opacity-50 m-4 p-3 rounded-md w-16 h-16 text-white cursor-not-allowed" />
+          )}
         </button>
-        <button onClick={() => handleScoreUpdate(5)}>
-          <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-blue-700 hover:text-blue-500 text" />
+        <button
+          onClick={() => {
+            handleScoreUpdate(5)
+            switchColour()
+          }}
+          disabled={tracker.colourLock}
+        >
+          {!tracker.colourLock ? (
+            <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-blue-700 hover:text-blue-500" />
+          ) : (
+            <ImBlocked className="opacity-50 m-4 p-3 rounded-md w-16 h-16 text-white cursor-not-allowed" />
+          )}
         </button>
-        <button onClick={() => handleScoreUpdate(6)}>
-          <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-rose-500 hover:text-rose-300 text" />
+        <button
+          onClick={() => {
+            handleScoreUpdate(6)
+            switchColour()
+          }}
+          disabled={tracker.colourLock}
+        >
+          {!tracker.colourLock ? (
+            <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-rose-500 hover:text-rose-300" />
+          ) : (
+            <ImBlocked className="opacity-50 m-4 p-3 rounded-md w-16 h-16 text-white cursor-not-allowed" />
+          )}
         </button>
-        <button onClick={() => handleScoreUpdate(7)}>
-          <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-black hover:text-neutral-800 text" />
+        <button
+          onClick={() => {
+            handleScoreUpdate(7)
+            switchColour()
+          }}
+          disabled={tracker.colourLock}
+        >
+          {!tracker.colourLock ? (
+            <FaCircle className="m-4 p-3 rounded-md w-16 h-16 text-black hover:text-neutral-800" />
+          ) : (
+            <ImBlocked className="opacity-50 m-4 p-3 rounded-md w-16 h-16 text-white cursor-not-allowed" />
+          )}
         </button>
       </div>
     </div>
