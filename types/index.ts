@@ -12,4 +12,5 @@ export type TrackerType = {
   player2name: string
   player2score: number
   playerselector: boolean
+  colourLock: boolean
 }
