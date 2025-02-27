@@ -43,8 +43,8 @@ export default function SnookerTracker() {
       {/*  */}
       {/*  */}
 
-      <div className="flex flex-col bg-slate-700 m-8 p-8 rounded-lg">
-        <div className="flex justify-between">
+      <div className="flex flex-col bg-slate-700 m-8 rounded-lg">
+        <div className="flex justify-center">
           <div className="flex flex-col items-start bg-slate-700 p-4 rounded-lg">
             {tracker.playerselector ? (
               <TbStarFilled className="mb-2 w-12 h-12 text-yellow-400" />
@@ -52,10 +52,10 @@ export default function SnookerTracker() {
               <TbStarFilled className="mb-2 w-12 h-12 text-slate-700" />
             )}
 
-            <div className="flex flex-col items-start w-full">
+            <div className="flex flex-col items-center w-full">
               <p className="mb-1 ml-4">Player 1 Name</p>
               <input
-                className="bg-slate-600 shadow-gray-800 shadow-md mb-4 p-2 rounded-lg w-64"
+                className="bg-slate-600 shadow-gray-800 shadow-md mb-4 p-2 rounded-lg w-48 text-center"
                 type="text"
                 value={tracker?.player1name || ''}
                 onChange={(e) => updatePlayer1Name?.(e.target.value)}
@@ -63,7 +63,7 @@ export default function SnookerTracker() {
 
               <p className="mb-1 ml-4">Player 1 Score</p>
               <input
-                className="bg-slate-600 shadow-gray-800 shadow-md p-2 rounded-lg w-64"
+                className="bg-slate-600 shadow-gray-800 shadow-md p-2 rounded-lg w-48 text-center"
                 type="text"
                 value={tracker?.player1score || 0}
               />
@@ -77,18 +77,18 @@ export default function SnookerTracker() {
               <TbStarFilled className="mb-2 w-12 h-12 text-yellow-400" />
             )}
 
-            <div className="flex flex-col items-end w-full">
+            <div className="flex flex-col items-center w-full">
               <p className="mr-4 mb-1">Player 2 Name</p>
               <input
-                className="bg-slate-600 shadow-gray-800 shadow-md mb-4 p-2 rounded-lg w-64 text-right"
+                className="bg-slate-600 shadow-gray-800 shadow-md mb-4 p-2 rounded-lg w-48 text-center"
                 type="text"
                 value={tracker?.player2name || ''}
                 onChange={(e) => updatePlayer2Name?.(e.target.value)}
               />
 
-              <p className="mr-4 mb-1">Player 2 Score</p>
+              <p className="mr-4 mb-1 center">Player 2 Score</p>
               <input
-                className="bg-slate-600 shadow-gray-800 shadow-md p-2 rounded-lg w-64 text-right"
+                className="bg-slate-600 shadow-gray-800 shadow-md p-2 rounded-lg w-48 text-center"
                 type="text"
                 value={tracker?.player2score || 0}
               />
@@ -96,7 +96,7 @@ export default function SnookerTracker() {
           </div>
         </div>
 
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center m-6">
           <button
             className="bg-blue-600 hover:bg-blue-500 shadow-md px-6 py-3 rounded-lg font-bold text-white"
             onClick={() => switchPlayer()}
