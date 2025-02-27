@@ -23,7 +23,7 @@ export default function GameItem({ games }: GameItemProps) {
     <>
       <div
         key={games.id}
-        className="flex flex-row justify-between items-center bg-slate-700 shadow-black shadow-md mt-6 p-2 py-2 rounded-md"
+        className="flex flex-row justify-between items-center bg-slate-700 shadow-black shadow-md mt-6 p-2 py-2 rounded-md text-sm"
       >
         <button
           className={`${
@@ -36,36 +36,36 @@ export default function GameItem({ games }: GameItemProps) {
           {games.locked ? <FaLock /> : <FaLockOpen />}
         </button>
 
-        <div className="mb-1 ml-4 text-left grow">
-          <p className="mb-1 ml-4">Player 1</p>
+        <div className="text-center grow">
+          <p className="mb-1">Player 1</p>
           <input
-            className="bg-slate-600 shadow-gray-800 shadow-md me-4 mb-4 ml-4 p-2 rounded-lg grow"
+            className="bg-slate-600 shadow-gray-800 shadow-md me-1 mb-4 ml-1 pt-1 pb-1 rounded-lg w-5/6 text-center"
             type="text"
             value={games.player1name}
             onChange={(e) => updatePlayer1Name(games.id, e.target.value)}
             disabled={games.locked}
           />
-          <p className="mb-1 ml-4">Player 2</p>
+          <p className="mb-1">Player 2</p>
           <input
-            className="bg-slate-600 shadow-gray-800 shadow-md me-4 mb-4 ml-4 p-2 rounded-md grow"
+            className="bg-slate-600 shadow-gray-800 shadow-md me-1 mb-4 ml-1 pt-1 pb-1 rounded-md w-5/6 text-center"
             type="text"
             value={games.player2name}
             onChange={(e) => updatePlayer2Name(games.id, e.target.value)}
             disabled={games.locked}
           />
         </div>
-        <div className="mb-1 ml-4 text-left grow">
-          <p className="mb-1">Player 1 Score</p>
+        <div className="text-center grow">
+          <p className="mb-1">P1 Score</p>
           <input
-            className="bg-slate-600 shadow-gray-800 shadow-md me-4 mb-4 p-2 rounded-md grow"
+            className="bg-slate-600 shadow-gray-800 shadow-md mb-4 pt-1 pb-1 rounded-md w-5/6 text-center"
             type="text"
             value={games.player1score}
             onChange={(e) => updatePlayer1Score(games.id, e.target.value)}
             disabled={games.locked}
           />
-          <p className="mb-1">Player 2 Score</p>
+          <p className="mb-1">P2 Score</p>
           <input
-            className="bg-slate-600 shadow-gray-800 shadow-md me-4 mb-4 p-2 rounded-md grow"
+            className="bg-slate-600 shadow-gray-800 shadow-md mb-4 pt-1 pb-1 rounded-md w-5/6 text-center"
             type="text"
             value={games.player2score}
             onChange={(e) => updatePlayer2Score(games.id, e.target.value)}
@@ -75,9 +75,10 @@ export default function GameItem({ games }: GameItemProps) {
 
         <button
           className={`${
-            games.locked ? 'hidden' : 'bg-red-600 hover:bg-red-400'
+            games.locked ? 'opacity-0' : 'bg-red-600 hover:bg-red-400'
           }  shadow-gray-800 shadow-md ms-4 mr-4 p-3 rounded-md text-white`}
           onClick={() => deleteGame(games.id)}
+          disabled={games.locked}
         >
           <FaRegTrashCan />
         </button>
