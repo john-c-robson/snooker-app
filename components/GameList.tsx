@@ -7,7 +7,7 @@ export default function GameList() {
   const { games, addGame } = useSnookerStore()
 
   return (
-    <div className="p-8 w-full text-center">
+    <div className="p-2 w-full text-center">
       <h1 className="mb-4 text-4xl">Match History</h1>
       <button
         className="flex flex-row bg-green-600 hover:bg-green-500 px-2 py-1 rounded-md"
