@@ -1,4 +1,5 @@
 import { useTrackerStore } from '@/stores/useTrackerStore'
+import { useSnookerStore } from '@/stores/useGameStore'
 import React from 'react'
 import { LuSave } from 'react-icons/lu'
 import { RxReset } from 'react-icons/rx'
@@ -17,6 +18,23 @@ export default function SnookerTracker() {
     switchColour,
   } = useTrackerStore()
 
+  const { addNewGame } = useSnookerStore()
+
+  const handleSaveGame = () => {
+    if (!tracker.player1name || !tracker.player2name) {
+      alert('Both players must have names before saving the game.')
+      return
+    }
+
+    addNewGame(
+      tracker.player1name,
+      tracker.player2name,
+      String(tracker.player1score),
+      String(tracker.player2score)
+    )
+    alert('Game saved successfully!')
+  }
+
   const handleScoreUpdate = (points: number) => {
     updateScore(points)
   }
@@ -34,7 +52,7 @@ export default function SnookerTracker() {
         </div>
         <div className="">
           <button className="bg-green-700 hover:bg-green-500 shadow-gray-800 shadow-md p-3 rounded-md text-white">
-            <LuSave className="w-8 h-8" />
+            <LuSave className="w-8 h-8" onClick={() => handleSaveGame()} />
           </button>
         </div>
       </div>
