@@ -12,6 +12,12 @@ interface IGameStore {
   updatePlayer2Score: (id: string, player2score: string) => void
   deleteGame: (id: string) => void
   lockGame: (id: string) => void
+  addNewGame: (
+    player1name: string,
+    player2name: string,
+    player1score: string,
+    player2score: string
+  ) => void
 }
 
 export const useSnookerStore = create<IGameStore>()(
@@ -34,7 +40,23 @@ export const useSnookerStore = create<IGameStore>()(
           ],
         }))
       },
-
+      //
+      addNewGame: (player1name, player2name, player1score, player2score) => {
+        set((state) => ({
+          games: [
+            ...state.games,
+            {
+              id: v4(),
+              player1name: player1name,
+              player1score: player1score,
+              player2name: player2name,
+              player2score: player2score,
+              locked: true,
+            },
+          ],
+        }))
+      },
+      //
       updatePlayer1Name: (id, name) => {
         set((state) => ({
           games: state.games.map((games) => {
