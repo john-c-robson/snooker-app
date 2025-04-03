@@ -16,6 +16,7 @@ export default function SnookerTracker() {
     switchPlayer,
     resetScreen,
     switchColour,
+    addMatchEvent,
   } = useTrackerStore()
 
   const { addNewGame } = useSnookerStore()
@@ -136,6 +137,12 @@ export default function SnookerTracker() {
         <button
           onClick={() => {
             handleScoreUpdate(1)
+            if(tracker.playerselector == true){
+              addMatchEvent(tracker.player1name, 1)
+            }
+            else{
+              addMatchEvent(tracker.player2name, 1)
+            }
             switchColour()
           }}
           disabled={!tracker.colourLock}
@@ -158,6 +165,12 @@ export default function SnookerTracker() {
         <button
           onClick={() => {
             handleScoreUpdate(2)
+            if(tracker.playerselector == true){
+              addMatchEvent(tracker.player1name, 2)
+            }
+            else{
+              addMatchEvent(tracker.player2name, 2)
+            }
             switchColour()
           }}
           disabled={tracker.colourLock}
@@ -171,6 +184,12 @@ export default function SnookerTracker() {
         <button
           onClick={() => {
             handleScoreUpdate(3)
+            if(tracker.playerselector == true){
+              addMatchEvent(tracker.player1name, 3)
+            }
+            else{
+              addMatchEvent(tracker.player2name, 3)
+            }
             switchColour()
           }}
           disabled={tracker.colourLock}
@@ -184,6 +203,12 @@ export default function SnookerTracker() {
         <button
           onClick={() => {
             handleScoreUpdate(4)
+            if(tracker.playerselector == true){
+              addMatchEvent(tracker.player1name, 4)
+            }
+            else{
+              addMatchEvent(tracker.player2name, 4)
+            }
             switchColour()
           }}
           disabled={tracker.colourLock}
@@ -197,6 +222,12 @@ export default function SnookerTracker() {
         <button
           onClick={() => {
             handleScoreUpdate(5)
+            if(tracker.playerselector == true){
+              addMatchEvent(tracker.player1name, 5)
+            }
+            else{
+              addMatchEvent(tracker.player2name, 5)
+            }
             switchColour()
           }}
           disabled={tracker.colourLock}
@@ -210,6 +241,12 @@ export default function SnookerTracker() {
         <button
           onClick={() => {
             handleScoreUpdate(6)
+            if(tracker.playerselector == true){
+              addMatchEvent(tracker.player1name, 6)
+            }
+            else{
+              addMatchEvent(tracker.player2name, 6)
+            }
             switchColour()
           }}
           disabled={tracker.colourLock}
@@ -223,6 +260,12 @@ export default function SnookerTracker() {
         <button
           onClick={() => {
             handleScoreUpdate(7)
+            if(tracker.playerselector == true){
+              addMatchEvent(tracker.player1name, 7)
+            }
+            else{
+              addMatchEvent(tracker.player2name, 7)
+            }
             switchColour()
           }}
           disabled={tracker.colourLock}

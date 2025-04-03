@@ -10,6 +10,7 @@ interface ITrackerStore {
   switchPlayer: () => void
   resetScreen: () => void
   switchColour: () => void
+  addMatchEvent: (player: string, ballPotted: number) => void
 }
 
 export const useTrackerStore = create<ITrackerStore>()(
@@ -22,8 +23,9 @@ export const useTrackerStore = create<ITrackerStore>()(
         player2score: 0,
         playerselector: true,
         colourLock: true,
+        matchHistory: [],
       } as TrackerType,
-      //
+
       updatePlayer1Name: (name) => {
         set((state) => ({
           tracker: {
@@ -32,7 +34,7 @@ export const useTrackerStore = create<ITrackerStore>()(
           },
         }))
       },
-      //
+
       updatePlayer2Name: (name) => {
         set((state) => ({
           tracker: {
@@ -41,7 +43,7 @@ export const useTrackerStore = create<ITrackerStore>()(
           },
         }))
       },
-      //
+
       updateScore: (points) => {
         set((state) => ({
           tracker: {
@@ -55,7 +57,7 @@ export const useTrackerStore = create<ITrackerStore>()(
           },
         }))
       },
-      //
+
       switchPlayer: () => {
         set((state) => ({
           tracker: {
@@ -65,7 +67,7 @@ export const useTrackerStore = create<ITrackerStore>()(
           },
         }))
       },
-      //
+
       switchColour: () => {
         set((state) => ({
           tracker: {
@@ -74,7 +76,23 @@ export const useTrackerStore = create<ITrackerStore>()(
           },
         }))
       },
-      //
+
+      addMatchEvent: (player: string, ballPotted: number) => {
+        set((state) => ({
+          tracker: {
+            ...state.tracker,
+            matchHistory: [
+              ...state.tracker.matchHistory,
+              {
+                player,
+                ballPotted,
+                timestamp: Date.now(),
+              },
+            ],
+          },
+        }))
+      },
+
       resetScreen: () => {
         set((state) => ({
           tracker: {
@@ -85,10 +103,10 @@ export const useTrackerStore = create<ITrackerStore>()(
             player2score: 0,
             playerselector: true,
             colourLock: true,
+            matchHistory: [],
           },
         }))
       },
-      //
     }),
     {
       name: 'johns-snooker-app_tracker-store',
