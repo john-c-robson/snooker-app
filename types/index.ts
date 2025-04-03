@@ -13,4 +13,9 @@ export type TrackerType = {
   player2score: number
   playerselector: boolean
   colourLock: boolean
+  matchHistory: {
+    player:string;
+    ballPotted:number;
+    timestamp:number;
+  }[];
 }
